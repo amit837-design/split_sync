@@ -30,7 +30,7 @@ const LandingPage = () => {
 
           {/* Download APK */}
           <a href="/split.apk" download className="btn btn-primary">
-            Download App <span>⬇</span>
+            Android App <span>⬇</span>
           </a>
         </div>
       </header>

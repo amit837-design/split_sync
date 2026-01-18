@@ -1,0 +1,214 @@
+/* --- Layout --- */
+.profile-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-main);
+  overflow: hidden;
+}
+
+/* --- Header --- */
+.profile-header {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(var(--bg-card-rgb), 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--input-border);
+  z-index: 10;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* --- Content --- */
+.profile-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  scrollbar-width: none;
+}
+.profile-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Profile Card --- */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 20px;
+  background: var(--bg-card);
+  border-radius: 20px;
+  border: 1px solid var(--input-border);
+}
+
+.profile-avatar-large {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--input-border);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 600;
+  overflow: hidden;
+  margin-bottom: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.profile-avatar-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.profile-email {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* --- Mutual Groups --- */
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: 8px;
+}
+
+.mutual-groups-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mutual-group-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mutual-group-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.group-avatar-small {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--input-border);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.group-avatar-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.group-info {
+  flex: 1;
+}
+
+.group-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.arrow-icon {
+  color: var(--text-secondary);
+  font-size: 18px;
+  opacity: 0.5;
+}
+
+.no-groups-text {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 20px;
+  opacity: 0.6;
+}
+/* ... existing css ... */
+
+/* 🔥 NEW: Finance Card Styles */
+.finance-card {
+    background: var(--bg-card);
+    border: 1px solid var(--input-border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.2s;
+}
+
+/* Color Coding Borders */
+.finance-card.owed {
+    border-color: var(--accent-green);
+    background: rgba(34, 197, 94, 0.05); /* Slight green tint */
+}
+
+.finance-card.due {
+    border-color: #f59e0b; /* Orange */
+    background: rgba(245, 158, 11, 0.05); /* Slight orange tint */
+}
+
+.finance-card.settled {
+    border-color: var(--input-border);
+    opacity: 0.8;
+}
+
+.finance-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+}
+
+.finance-amount {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Text Color Overrides for Amounts */
+.finance-card.owed .finance-amount { color: var(--accent-green); }
+.finance-card.due .finance-amount { color: #f59e0b; }
+.finance-card.settled .finance-amount { color: var(--text-secondary); font-size: 16px; font-weight: 500;}

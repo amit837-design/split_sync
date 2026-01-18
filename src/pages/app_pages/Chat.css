@@ -1,0 +1,272 @@
+/* config */
+:root {
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* layout */
+.chat-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* header */
+.chat-header {
+  padding: 12px 16px; /* Reduced padding for compactness */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Reduced gap */
+  background: rgba(var(--bg-card-rgb), 0.85); /* Slightly more opaque */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--input-border);
+  z-index: 10;
+}
+
+/* header row 1 */
+.header-top {
+  display: flex;
+  justify-content: space-between; /* Ensures Title Left, Icon Right */
+  width: 100%;
+}
+
+.header-title {
+  color: var(--text-primary);
+  letter-spacing: 1px; /* Tighter tracking looks more modern */
+  text-align: left !important;
+}
+
+/* icon button (Create Group Icon) */
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent-green);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: scale(1.05);
+}
+
+.icon-svg {
+  width: 22px; /* Reduced from 28px */
+  height: 22px;
+}
+
+/* header row 2 */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  position: relative;
+}
+
+/* search input */
+.search-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px; /* Reduced vertical padding */
+  font-size: 13.5px; /* Slightly smaller text */
+  border-radius: 10px; /* Slightly tighter radius */
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  outline: none;
+  transition: flex 0.35s var(--spring), opacity 0.2s,
+    transform 0.3s var(--spring), border-color 0.2s;
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.search-input:focus {
+  flex: 4;
+  border-color: var(--accent-green);
+  background: var(--bg-card);
+}
+
+.search-input:focus::placeholder {
+  opacity: 0.3;
+}
+
+/* sibling shrink logic */
+.header-actions:has(.search-input:focus) .search-input:not(:focus) {
+  flex: 0.5;
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+/* action button (Money/New Chat) */
+.new-chat-btn {
+  width: 38px; /* Reduced from 44px */
+  height: 38px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent-green);
+  color: #000;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s var(--spring);
+  box-shadow: 0 4px 10px rgba(34, 197, 94, 0.2);
+}
+
+.new-chat-btn:hover {
+  transform: translateY(-2px);
+}
+
+.new-chat-btn:active {
+  transform: scale(0.92);
+}
+
+/* hide button on search focus */
+.header-actions:has(.search-input:focus) .new-chat-btn {
+  width: 0;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+.icon-add {
+  width: 20px; /* Reduced from 24px */
+  height: 20px;
+  stroke-width: 2.5;
+}
+
+/* user list */
+.user-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 10px; /* Tighter padding */
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Reduced gap between cards */
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+
+/* Custom Scrollbar */
+.user-list::-webkit-scrollbar {
+  width: 4px;
+}
+.user-list::-webkit-scrollbar-thumb {
+  background: var(--input-border);
+  border-radius: 4px;
+}
+
+.status-text {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* user card */
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 10px; /* Reduced from 12px */
+  border-radius: var(--radius);
+  cursor: pointer;
+  background: transparent;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: slideIn 0.25s var(--spring) forwards;
+  transition: background 0.2s;
+}
+
+.user-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* stagger animations */
+.user-card:nth-child(1) {
+  animation-delay: 0.03s;
+}
+.user-card:nth-child(2) {
+  animation-delay: 0.06s;
+}
+.user-card:nth-child(3) {
+  animation-delay: 0.09s;
+}
+.user-card:nth-child(4) {
+  animation-delay: 0.12s;
+}
+.user-card:nth-child(5) {
+  animation-delay: 0.15s;
+}
+
+.user-list > .user-card:last-of-type {
+  margin-bottom: 70px; /* Extra space at bottom */
+}
+
+/* avatar */
+.avatar-placeholder {
+  width: 40px; /* Reduced from 48px */
+  height: 40px;
+  margin-right: 12px;
+  border-radius: 50%;
+  background: var(--input-border);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px; /* Smaller letter inside avatar */
+  overflow: hidden;
+  flex-shrink: 0; /* Prevents avatar squishing */
+}
+
+.avatar-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* user info */
+.user-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.user-name {
+  font-size: 14px; /* Reduced from 15px */
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.user-email {
+  font-size: 12px; /* Reduced from 13px */
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  opacity: 0.8;
+}
+
+/* animation */
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

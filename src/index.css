@@ -1,0 +1,53 @@
+:root {
+  /* --- DARK MODE (DEFAULT) --- */
+  --bg-main: #0b0f0d;
+  --bg-card: #0f1512;
+
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+
+  --accent-green: #22c55e;
+  --accent-green-dark: #16a34a;
+
+  --input-bg: #0c1310;
+  --input-border: #1f2937;
+
+  --error: #ef4444;
+  --toggle-bg: #3f3f46; /* Added for toggle switches */
+
+  --radius: 12px;
+}
+
+/* --- LIGHT MODE OVERRIDES --- */
+body.light-mode {
+  --bg-main: #f0fdf4; /* Very pale green/white background */
+  --bg-card: #ffffff;
+
+  --text-primary: #111827; /* Near black */
+  --text-secondary: #6b7280; /* Dark gray */
+
+  /* Keep accent green similar, or slightly darker for contrast */
+  --accent-green: #16a34a; 
+  --accent-green-dark: #15803d;
+
+  --input-bg: #f3f4f6;
+  --input-border: #e5e7eb;
+  
+  --toggle-bg: #e5e7eb;
+}
+
+/* global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Smooth Theme Transition */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

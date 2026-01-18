@@ -1,0 +1,294 @@
+/* --- Config --- */
+:root {
+  --spring-fast: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Lighter, Smoother Glass Effect */
+  --glass-bg: rgba(
+    var(--bg-card-rgb),
+    0.1
+  ); /* Reduced opacity for less density */
+  --glass-border: rgba(255, 255, 255, 0.1); /* Lighter border */
+  --glass-blur: blur(10px) saturate(100%) opacity(0.95); /* Reduced blur & saturation */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* --- Layout --- */
+.chat-window {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-main);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* --- Header --- */
+.chat-window-header {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+
+  /* Glass Style */
+  background: var(--bg-main);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.back-btn,
+.info-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent-green);
+  padding: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: opacity 0.2s;
+}
+
+.back-btn:hover,
+.info-btn:hover {
+  opacity: 0.7;
+}
+
+.back-btn {
+  font-size: 24px;
+  margin-left: -8px;
+}
+.info-btn {
+  margin-right: -4px;
+}
+.icon-info {
+  width: 22px;
+  height: 22px;
+}
+
+.chat-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Messages List --- */
+.messages-container {
+  flex: 1;
+  width: 100%;
+
+  /* Native Smooth Scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Momentum scrolling on iOS */
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  /* Padding accommodates floating header/footer */
+  padding: 70px 16px 80px 16px;
+
+  /* Hide Scrollbars */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.messages-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Bottom Anchor */
+.messages-container > :first-child {
+  margin-top: auto;
+}
+
+/* --- Message Bubbles --- */
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+  position: relative;
+  /* Simple pop-in animation only */
+  animation: popIn 0.3s ease-out forwards;
+}
+
+.message-wrapper.received {
+  align-self: flex-start;
+}
+.message-wrapper.sent {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.message-bubble {
+  padding: 10px 16px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.received .message-bubble {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-bottom-left-radius: 4px;
+}
+.sent .message-bubble {
+  background: var(--accent-green);
+  color: #000;
+  border-bottom-right-radius: 4px;
+  font-weight: 500;
+}
+
+.message-time {
+  font-size: 11px;
+  color: var(--text-secondary);
+  padding: 0 6px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.message-time.show {
+  max-height: 20px;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* --- Input Area --- */
+.chat-input-area {
+  padding: 12px 16px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  /* Glass Style */
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-top: 1px solid var(--glass-border);
+}
+
+.attach-btn,
+.send-btn {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: transform 0.2s var(--spring-fast);
+}
+
+.attach-btn {
+  background: var(--input-bg);
+  color: var(--accent-green);
+  border: 1px solid var(--input-border);
+}
+
+.send-btn {
+  background: var(--accent-green);
+  color: #000;
+}
+
+.attach-btn:active,
+.send-btn:active {
+  transform: scale(0.95);
+}
+
+.icon-add,
+.icon-send {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5;
+}
+.icon-send {
+  margin: 2px 0 0 2px;
+}
+
+.msg-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.msg-input:focus {
+  border-color: var(--accent-green);
+  background: var(--bg-card);
+}
+
+/* Hide Attach button smoothly on focus */
+.chat-input-area:has(.msg-input:focus) .attach-btn {
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  margin: 0;
+  border: none;
+  pointer-events: none;
+}
+
+/* --- Simple Animations --- */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- Sender Name (Group) --- */
+.msg-sender-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-green);
+  margin-bottom: 4px;
+  margin-left: 12px;
+  align-self: flex-start;
+  opacity: 0.9;
+}

@@ -1,0 +1,174 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+/* mobile-first */
+.auth-card {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.resend-link {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: -4px;      
+  align-self: center;   
+  text-decoration: none;
+  transition: color 0.2s;
+  padding: 4px;          
+}
+
+.resend-link:hover:not(:disabled) {
+  color: var(--accent-green);
+  text-decoration: underline;
+}
+
+.resend-link:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.auth-title {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.auth-input {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  padding: 12px;
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  outline: none;
+  width: 100%;
+}
+
+.auth-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.auth-btn {
+  background: var(--accent-green);
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+}
+
+.auth-btn.secondary {
+  background: var(--accent-green-dark);
+}
+
+.auth-btn:hover {
+  opacity: 0.9;
+}
+
+/* Password field wrapper */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper .auth-input {
+  padding-right: 42px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+  color: var(--text-secondary);
+}
+
+.password-toggle:hover {
+  opacity: 0.8;
+}
+
+/* Forgot password */
+.forgot-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 6px;
+}
+
+.auth-message {
+  font-size: 13px;
+  text-align: center;
+  margin: 6px 0;
+}
+
+.auth-message.error {
+  color: #ff4d4f;
+}
+
+.auth-message.success {
+  color: #52c41a;
+}
+
+.auth-message.info {
+  color: #faad14;
+}
+
+.forgot-btn:hover {
+  color: var(--accent-green);
+}
+
+/* 🖥 Desktop Enhancements */
+@media (min-width: 768px) {
+  .auth-container {
+    align-items: center;
+  }
+
+  .auth-card {
+    max-width: 360px;
+    gap: 16px;
+  }
+
+  .auth-title {
+    font-size: 20px;
+  }
+}
+
+/* 🖥 Large Desktop (Ultra-wide screens) */
+@media (min-width: 1200px) {
+  .auth-card {
+    max-width: 380px;
+  }
+}
+
+/* Disabled states */
+.auth-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.forgot-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

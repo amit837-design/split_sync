@@ -1,0 +1,146 @@
+.edit-profile-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-main);
+  padding-bottom: 20px;
+}
+
+.edit-header {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(var(--bg-card-rgb), 0.85);
+  border-bottom: 1px solid var(--input-border);
+}
+
+.edit-header h1 {
+  font-size: 18px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* Avatar Section */
+.edit-content {
+  flex: 1;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-upload-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--input-border);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: var(--text-secondary);
+  border: 2px solid var(--input-border);
+}
+
+.avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hover overlay */
+.camera-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.change-photo-text {
+  color: var(--accent-green);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Inputs */
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-left: 4px;
+}
+
+.edit-input {
+  width: 100%;
+  padding: 14px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 16px;
+  outline: none;
+}
+
+.edit-input:focus {
+  border-color: var(--accent-green);
+}
+
+.form-group.disabled {
+  opacity: 0.6;
+}
+.info-text {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-left: 4px;
+}
+
+/* Footer */
+.edit-footer {
+  padding: 20px;
+}
+
+.save-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--accent-green);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+.save-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

@@ -1,0 +1,334 @@
+/* Backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease;
+}
+
+/* Modal Content Box */
+.modal-content {
+  width: 90%;
+  max-width: 400px;
+  background: var(--bg-card); /* Using your index.css var */
+  border: 1px solid var(--input-border);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 80vh;
+}
+
+/* Header */
+.modal-header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--input-border);
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 18px;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Body */
+.modal-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+/* Group Name Input Section */
+.group-name-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 🔥 UPDATED: Camera Placeholder Styling */
+.group-icon-placeholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--input-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer; /* Indicates Clickable */
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Hover effect to show it's interactive */
+.group-icon-placeholder:hover,
+.group-icon-placeholder.clickable:hover {
+  background: #333;
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+/* The actual image preview inside the circle */
+.group-icon-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 12px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  color: var(--text-primary);
+  outline: none;
+  font-size: 14px;
+}
+.modal-input:focus {
+  border-color: var(--accent-green);
+}
+
+.name-input {
+  flex: 1;
+}
+
+/* Selected Chips Area (Horizontal Scroll) */
+.selected-chips-area {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+}
+.selected-chips-area::-webkit-scrollbar {
+  display: none;
+}
+
+.user-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  min-width: 50px;
+  position: relative;
+  animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.chip-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--input-border);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.user-chip:hover .chip-avatar {
+  border-color: var(--error); /* Red border on hover to indicate delete */
+}
+
+.chip-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chip-name {
+  font-size: 10px;
+  color: var(--text-primary);
+  text-align: center;
+  max-width: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chip-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--error);
+  color: white;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.2s;
+}
+
+.user-chip:hover .chip-remove {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Results List */
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.result-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.result-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--input-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+.result-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.result-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-name {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.result-email {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* The Plus / Check Button */
+.add-user-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--text-secondary);
+  background: transparent;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.add-user-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Active State (Added) */
+.add-user-btn.added {
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+  color: #000;
+  transform: scale(1.1);
+}
+
+.status-text {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 13px;
+  padding: 10px;
+}
+
+/* Footer */
+.modal-footer {
+  padding: 16px;
+  border-top: 1px solid var(--input-border);
+}
+
+.create-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent-green);
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.create-btn:hover {
+  transform: translateY(-2px);
+}
+.create-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes popIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

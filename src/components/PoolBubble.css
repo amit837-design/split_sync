@@ -1,0 +1,124 @@
+/* Card Container */
+.pool-card {
+  background: #18181b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  min-width: 220px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+/* Status Variants */
+.pool-card.settled { border-color: var(--accent-green); background: rgba(34, 197, 94, 0.05); }
+.pool-card.verifying { border-color: #f59e0b; }
+.pool-card.cancelled { border-color: #ef4444; opacity: 0.7; }
+
+/* Header */
+.pool-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pool-icon-box {
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.pool-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Take remaining space */
+}
+.pool-title {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Sub Info Row (Amount + Badge) */
+.pool-sub-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pool-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.pool-split-type {
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Status Text */
+.pool-status-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.pool-card.settled .pool-status-text { color: var(--accent-green); }
+.pool-card.verifying .pool-status-text { color: #f59e0b; }
+.pool-card.cancelled .pool-status-text { color: #ef4444; }
+
+/* Actions Area */
+.pool-actions {
+  display: flex;
+  gap: 8px;
+  min-height: 36px;
+  align-items: center;
+}
+
+.action-btn {
+  flex: 1;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.action-btn:active { transform: scale(0.97); }
+
+.pay-btn { background: var(--text-primary); color: #000; }
+.confirm-btn { background: var(--accent-green); color: #000; }
+.cancel-btn { background: transparent; border: 1px solid #ef4444; color: #ef4444; }
+.cancel-btn:hover { background: rgba(239, 68, 68, 0.1); }
+.reject-btn { background: rgba(239, 68, 68, 0.15); color: #ef4444; flex: 0 0 36px; padding: 0; }
+.reject-btn svg { width: 18px; height: 18px; }
+
+.waiting-text {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-style: italic;
+  width: 100%;
+  text-align: center;
+}
+.settled-badge {
+  font-size: 10px;
+  text-align: center;
+  width: 100%;
+  color: var(--accent-green);
+  opacity: 0.8;
+}

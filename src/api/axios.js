@@ -31,7 +31,7 @@ api.interceptors.response.use(
 
       localStorage.removeItem("userInfo");
 
-      window.location.href = "/signup_login";
+      window.location.href = "/";
     }
     return Promise.reject(error);
   },

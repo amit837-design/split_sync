@@ -100,14 +100,13 @@ const ForgotPasswordModal = ({ closeModal }) => {
     setIsLoading(true);
     setMessage(null);
     try {
-      // 3. Send the Correct Object: { resetToken, newPassword }
       await resetPassword({ 
           resetToken: resetToken, 
-          newPassword: password // Map frontend 'password' to backend 'newPassword'
+          newPassword: password 
       });
       
       setIsLoading(false);
-      navigate("/app");
+      navigate("/");
       closeModal();
     } catch (err) {
       setIsLoading(false);
@@ -124,7 +123,7 @@ const ForgotPasswordModal = ({ closeModal }) => {
       <div className={`otp-modal ${isClosing ? "closing" : ""}`}>
         <div className="modal-handle" />
 
-        {/* ================= POPUP 1: EMAIL ================= */}
+        {/*POPUP 1: EMAIL*/}
         {popup === "email" && (
           <>
             <h3>Forgot Password</h3>
@@ -146,7 +145,7 @@ const ForgotPasswordModal = ({ closeModal }) => {
           </>
         )}
 
-        {/* ================= POPUP 2: OTP ================= */}
+        {/*POPUP 2: OTP*/}
         {popup === "otp" && (
           <>
             <h3>Enter Code</h3>
@@ -168,7 +167,7 @@ const ForgotPasswordModal = ({ closeModal }) => {
           </>
         )}
 
-        {/* ================= POPUP 3: RESET ================= */}
+        {/*POPUP 3: RESET*/}
         {popup === "reset" && (
           <>
             <h3>Reset Password</h3>

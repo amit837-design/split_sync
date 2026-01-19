@@ -4,7 +4,6 @@ import { ChatProvider } from "./context/ChatContext";
 import { ThemeProvider } from "./context/ThemeContext"; // 🔥 1. Import ThemeProvider
 
 // Pages
-//import LandingPage from "./pages/LandingPage";
 import Signup from "./pages/Signup";
 import Chat from "./pages/app_pages/Chat";
 import ChatWindow from "./pages/app_pages/ChatWindow";
@@ -32,8 +31,7 @@ const App = () => {
       <div className="App">
         <ChatProvider>
           <Routes>
-            {/* Auth Route 
-            <Route path="/" element={<LandingPage />} />*/}
+            {/* Auth Route */}
             <Route path="/" element={<Signup />} />
 
             {/* Main App Routes (With BottomNav) */}

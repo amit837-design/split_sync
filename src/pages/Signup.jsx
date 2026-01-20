@@ -153,7 +153,7 @@ const Signup = () => {
         <OTPModal
           email={form.email}
           closeModal={() => setShowOTP(false)}
-          onSuccess={handleOTPSuccess} /* <--- PASSING THE HANDLER HERE */
+          onSuccess={handleOTPSuccess} 
         />
       )}
 

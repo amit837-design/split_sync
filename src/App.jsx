@@ -12,7 +12,7 @@ import Dashboard from "./pages/app_pages/Dashboard";
 import Settings from "./pages/app_pages/Settings";
 import EditProfile from "./pages/app_pages/EditProfile";
 import GroupInfo from "./pages/app_pages/GroupInfo";
-
+import LandingPage from "./pages/LandingPage";
 // Components
 import BottomNav from "./components/BottomNav";
 
@@ -32,7 +32,8 @@ const App = () => {
         <ChatProvider>
           <Routes>
             {/* Auth Route */}
-            <Route path="/" element={<Signup />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/signup_login" element={<Signup />} />
 
             {/* Main App Routes (With BottomNav) */}
             <Route path="/app" element={<Chat />} />
